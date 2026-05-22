@@ -345,7 +345,7 @@ def prescription():
             st.markdown("**Rx:**")
             for i, m in enumerate(selected, 1):
                 st.write(f"{i}. {m['name']} - {m['dose']} - {m['freq']} x {m['days']} days")
-            st.markdown(f"**Tests:** {inv or 'None'}
+            st.markdown(f"**Tests:** {inv or 'None'}")
 **Advice:** {adv or 'None'}
 **Follow-up:** {fup.strftime('%d/%m/%Y')}")
             txt = f"PRESCRIPTION\nPatient: {patient[2]}\nDiagnosis: {diag}\n"
