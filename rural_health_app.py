@@ -210,7 +210,7 @@ def search_patient():
         for p in c.fetchall():
             with st.expander(f"👤 {p[2]} ({p[4]}, {p[3]}y) - {p[1]}"):
                 c1, c2 = st.columns(2)
-                c1.write(f"**ID:** {p[1]}
+                c1.write(f"**ID:** {p[1]}")
 **Age:** {p[3]}
 **Gender:** {p[4]}
 **Phone:** {p[5] or 'N/A'}")
