@@ -338,19 +338,45 @@ def prescription():
                      (prid, pid, doc, diag, code, json.dumps(selected), inv, adv, fup.strftime("%Y-%m-%d"), sev, datetime.now()))
             conn.commit()
             st.success("Prescription generated!")
-            st.markdown("### 📄 Prescription")
-            st.markdown(f"**Patient:** {patient[2]} | **Age:** {patient[3]}y | **ID:** {patient[1]}")
+         st.markdown(f"**Patient:** {patient[2]} | **Age:** {patient[3]}y | **ID:** {patient[1]}")
             st.markdown(f"**Date:** {datetime.now().strftime('%d/%m/%Y')} | **Doctor:** {doc}")
             st.markdown(f"**Diagnosis:** {diag} | **Severity:** {sev}")
             st.markdown("**Rx:**")
+
             for i, m in enumerate(selected, 1):
                 st.write(f"{i}. {m['name']} - {m['dose']} - {m['freq']} x {m['days']} days")
+
             st.markdown(f"**Tests:** {inv or 'None'}")
-st.markdown(f"**Advice:** {adv or 'None'}")
-st.markdown(f"**Follow-up:** {fup.strftime('%d/%m/%Y')}")
+            st.markdown(f"**Advice:** {adv or 'None'}")
+            st.markdown(f"**Follow-up:** {fup.strftime('%d/%m/%Y')}")
+
             txt = f"PRESCRIPTION\nPatient: {patient[2]}\nDiagnosis: {diag}\n"
-            for m in selected: txt += f"- {m['name']} {m['dose']} {m['freq']} {m['days']}days\n"
-            st.download_button("📥 Download", txt, f"presc_{patient[1]}_{datetime.now().strftime('%Y%m%d')}.txt")
+
+            for m in selected:
+                txt += f"- {m['name']} {m['dose']} {m['freq']} {m['days']}days\n"
+
+            st.download_button(
+                "📥 Download",
+                txt,
+                f"presc_{patient[1]}_{datetime.now().strftime('%Y%m%d')}.txt"
+            )
+         for i, m in enumerate(selected, 1):
+                st.write(f"{i}. {m['name']} - {m['dose']} - {m['freq']} x {m['days']} days")
+
+            st.markdown(f"**Tests:** {inv or 'None'}")
+            st.markdown(f"**Advice:** {adv or 'None'}")
+            st.markdown(f"**Follow-up:** {fup.strftime('%d/%m/%Y')}")
+
+            txt = f"PRESCRIPTION\nPatient: {patient[2]}\nDiagnosis: {diag}\n"
+
+            for m in selected:
+                txt += f"- {m['name']} {m['dose']} {m['freq']} {m['days']}days\n"
+
+            st.download_button(
+                "📥 Download",
+                txt,
+                f"presc_{patient[1]}_{datetime.now().strftime('%Y%m%d')}.txt"
+            )
 
 def monitoring():
     st.markdown("### 📊 Health Monitoring")
