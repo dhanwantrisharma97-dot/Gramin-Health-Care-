@@ -213,10 +213,10 @@ def search_patient():
                 c1.write(f"**ID:** {p[1]}")
 **Age:** {p[3]}
 **Gender:** {p[4]}
-**Phone:** {p[5] or 'N/A'}")
-                c2.write(f"**Address:** {p[6] or 'N/A'}
-**Blood Group:** {p[8] or 'N/A'}
-**Allergies:** {p[9] or 'None'}")
+c1.write(f"**Phone:** {p[5] or 'N/A'}")
+c2.write(f"**Address:** {p[6] or 'N/A'}")
+c2.write(f"**Blood Group:** {p[8] or 'N/A'}")
+c2.write(f"**Allergies:** {p[9] or 'None'}")
 
 def vitals_entry():
     st.markdown("### 🩺 Vitals Entry")
